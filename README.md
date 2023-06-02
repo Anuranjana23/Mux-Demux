@@ -52,14 +52,43 @@ Y0=s1′s0′I <br>
 
 
 ## Program:
+~~~
+Multiplexer:
+module exp7a(I0,I1,I2,I3,s1,s0,y);
+input I0,I1,I2,I3,s0,s1;
+output y;
+wire p,q,r,s,s1d,s0d;
+not(s1d,s1);
+not(s0d,s0);
+and(p,s1d,s0d,I0);
+and(q,s1d,s0,I1);
+and(r,s1,s0d,I2);
+and(s,s1,s0,I3);
+or(y,p,q,r,s);
+endmodule
+
+Demultiplexer:
+module exp7b(s1,s0,i,y3,y2,y1,y0);
+input s1,s0,i;
+output y3,y2,y1,y0;
+assign y3=(s1&s0&i);
+assign y2=(s1&(~s0)&i);
+assign y1=((~s1)&s0&i);
+assign y0=((~s1)&(~s0)&i);
+endmodule
+~~~
 
 
 ## RTL Schematic:
+![RTL](https://github.com/Anuranjana23/Mux-Demux/assets/134050204/b1aae9a2-f16f-4d1c-b65b-4192bc1008be)
 
+![RTL](https://github.com/Anuranjana23/Mux-Demux/assets/134050204/e6cb7dc8-86b9-4ebf-a5b0-b6e6c07858d2)
 
 
 
 ## Timing Diagram:
+![Timing diagram](https://github.com/Anuranjana23/Mux-Demux/assets/134050204/2ec06d2d-f277-467c-b5a3-e741c618caec)
+![Timing diagram](https://github.com/Anuranjana23/Mux-Demux/assets/134050204/03339ba7-f7b4-43c4-9ef2-ccef47a545b0)
 
 
 
